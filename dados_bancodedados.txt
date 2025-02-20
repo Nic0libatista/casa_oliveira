@@ -1,0 +1,92 @@
+dml -> Data manipulation language 
+crud - > c -> create (insert)
+	r -> read | retriaver (ler| capturar) select
+    u -> update (atualizar)
+    d -> delete (apagar) 
+    
+
+
+-- selecionar o banco de dados
+use dbcasaoliveira;    
+
+-- inserir um novo contato de um cliente
+-- descrever a tabela para ver os campos
+desc contato;
+
+insert into contato(telefone_residencial, telefone_comercial, telefone_celular, email)
+values("11-95512339","11-35612818","11-965232936", "valeria.torres@gmail.com");
+
+
+insert into contato(telefone_comercial, telefone_celular, email)
+values("11-35612856","11-965232975", "italac@italac.com.br");
+
+-- selecionar * (toas as colunas) from (origem)
+select * from contato;
+
+------------------------------------------------------
+desc endereco;
+
+insert into endereco (tipo_logradouro, logradouro,numero,complemento,cep,bairro,cidade,estado)
+values ("rua", "Antonio Morais", "35B", "casa 12", "06528-100", "Jardim Oliveira", "São Paulo", "SP");
+
+
+insert into endereco (tipo_logradouro, logradouro,numero,complemento,cep,bairro,cidade,estado)
+values ("rua", "Min, Jesuino Cardoso", "454", "", "04544-051", "Vila Olimpia", "São Paulo", "SP");
+
+select * from endereco;
+
+-------------------------------------------------------------------------------------------------
+desc cliente;
+
+insert into cliente(nome_cliente,cpf_cliente,data_nascimento_cliente,contato, endereco)
+values("Valeria Torres de Oliveira","335.286.448-12","1986-10-05",1,1);
+
+select * from cliente;
+
+----------------------------------------------------------------------------
+
+desc fornecedor;
+insert into fornecedor(razao_social,nome_fantasia,cnpj,contato,endereco)
+values("Goiasminas Indústria de Laticínios Ltda","Italac","01.257.995/0001-33",2,2);
+
+select * from fornecedor;
+
+----------------------------------------------------------------------
+desc categoria;
+insert into categoria(nome_categoria, descricao_categoria)
+values("Laticínios","Produtos derivados de leite");
+
+select * from categoria;
+
+-----------------------------------------------------------------------
+
+desc produto;
+insert into produto(nome_produto,preco,data_validade,data_fabricacao,fornecedor,categoria)
+values("Leite Integral",4.50,"2025-05-10","2025-01-05",1,1);
+
+insert into produto(nome_produto,preco,data_validade,data_fabricacao,fornecedor,categoria)
+values("Leite condensado",6.50,"2025-07-11","2025-01-15",1,1);
+
+insert into produto(nome_produto,preco,data_validade,data_fabricacao,fornecedor,categoria)
+values("Iorgute natural 1,5L",10.99,"2025-04-03","2025-01-25",1,1);
+
+insert into produto(nome_produto,preco,data_validade,data_fabricacao,fornecedor,categoria)
+values("Requeijão",13.90,"2025-09-10","2025-01-02",1,1);
+
+select * from produto;
+
+-------------------------------------------------------------------------
+desc estoque;
+insert into estoque(produto,quantidade,data_aquisicao)
+values(1,30,"2025-01-20");
+
+insert into estoque(produto,quantidade,data_aquisicao)
+values(2,50,"2025-01-10");
+
+insert into estoque(produto,quantidade,data_aquisicao)
+values(3,20,"2025-01-05");
+
+insert into estoque(produto,quantidade,data_aquisicao)
+values(4,20,"2025-01-15");
+
+select * from estoque;
