@@ -1,0 +1,42 @@
+-- banco de dados clinica
+
+create database clinica;
+use clinica;
+create table paciente(
+id_paciente int auto_increment primary key,
+nome_paciente varchar(50) not null,
+cpf_paciente varchar(15) not null unique,
+email_paciente varchar(100) not null unique,
+telefone varchar(20) not null
+);
+
+create table medico(
+id_medico int auto_increment primary key,
+nome_medico varchar(50) not null,
+crm varchar(15) not null unique,
+email_medico varchar(100) not null unique,
+telefone_medico varchar(30) not null
+);
+
+create table agenda(
+id_agenda int auto_increment primary key,
+paciente int not null,
+medico int not null,
+especialidade varchar(30) not null,
+data_consulta date not null,
+hora_consulta time not null,
+observacao text not null
+);
+
+alter table agenda
+add constraint `fk_agenda_pk_paciente`
+foreign key agenda(`paciente`)
+references paciente(`id_paciente`);
+
+
+alter table agenda
+add constraint `fk_agenda_pk_medico`
+foreign key agenda(`medico`)
+references medico(`id_medico`);
+
+
