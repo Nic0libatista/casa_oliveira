@@ -4,6 +4,12 @@ crud - > c -> create (insert)
     u -> update (atualizar)
     d -> delete (apagar) 
     
+    dml -> Data manipulation language 
+crud - > c -> create (insert)
+	r -> read | retriaver (ler| capturar) select
+    u -> update (atualizar)
+    d -> delete (apagar) 
+    
 
 
 -- selecionar o banco de dados
@@ -20,6 +26,10 @@ values("11-95512339","11-35612818","11-965232936", "valeria.torres@gmail.com");
 insert into contato(telefone_comercial, telefone_celular, email)
 values("11-35612856","11-965232975", "italac@italac.com.br");
 
+
+insert into contato(telefone_residencial, telefone_comercial, telefone_celular, email)
+value("11-66537789","11-45476632","11-965232920","pedro.oliveira@gmail.com");
+
 -- selecionar * (toas as colunas) from (origem)
 select * from contato;
 
@@ -32,6 +42,10 @@ values ("rua", "Antonio Morais", "35B", "casa 12", "06528-100", "Jardim Oliveira
 
 insert into endereco (tipo_logradouro, logradouro,numero,complemento,cep,bairro,cidade,estado)
 values ("rua", "Min, Jesuino Cardoso", "454", "", "04544-051", "Vila Olimpia", "São Paulo", "SP");
+
+
+insert into endereco (tipo_logradouro, logradouro,numero,complemento,cep,bairro,cidade,estado)
+values ("travessa", "Marieta Dias", "51", "casa dos fundos", "04532-051", "Jardim Alegre", "São Paulo", "SP");
 
 select * from endereco;
 
@@ -90,3 +104,54 @@ insert into estoque(produto,quantidade,data_aquisicao)
 values(4,20,"2025-01-15");
 
 select * from estoque;
+
+-----------------------------------------------------------------------    
+desc cargos;
+insert into cargos(funcao,salario,descricao_cargos,beneficios)
+values("Operador de caixa",2500.90,"Atender os clientes","Vale transporte, vale refeição");
+
+
+select * from cargos;
+
+----------------------------------------------------------------------------------------
+desc funcionario;
+insert into funcionario(nome_funcionario,cpf_funcionario,data_nascimento_funcionario,horario_expediente,cargos,contato,endereco)
+values("pedro de oliveira","5454785547","1978-10-02", "8:00 ás 17:00",1,3,3);
+
+select * from funcionario;
+
+---------------------------------------------------------------------------------------------
+
+desc venda;
+insert into venda(cliente,funcionario)
+values(1,1);
+
+select * from venda;
+
+--------------------------------------------------------------------------------------------------------------
+
+desc itensvenda;
+insert into itensvenda(venda,produto,quantidade_vendida,total)
+values(1,1,12,54);
+
+insert into itensvenda(venda,produto,quantidade_vendida,total)
+values(1,2,1,6.50);
+
+
+
+select * from itensvenda;
+
+select sum(total) from itensvenda;
+update venda set subtotal =60.50 where id_venda=1;
+ select * from venda;
+    
+    
+-----------------------------------------------------------------------
+desc pagamento;
+insert into pagamento(venda,forma_pagamento,valor_pagar,parcela,valor_parcela,troco)
+values(1,"Pix",60.50,1,60.50,0);    
+    
+select * from pagamento;
+
+
+----------------------------------------------------------------------------------------
